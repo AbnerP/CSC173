@@ -49,14 +49,38 @@ void Node_print(struct Node* this){
     
 }
 
+struct Tree{
+    struct Node* root;
+};
+
+struct Tree* new_Tree(){
+    struct Tree* this = (struct Tree*)malloc(sizeof(struct Tree));
+
+    if(this == NULL){
+        return NULL; //Out of memory
+    }
+
+    this->root = NULL;
+    return this;
+
+}
+
+void Tree_add(struct Tree* this,int value){
+    this->root = Node_add(this->root,value);
+}
+
+void Tree_print(struct Tree* this){
+    Node_print(this->root);
+}
+
 int main(int argc, char *argv[]) {
-    struct Node* root = NULL;
-    root = Node_add(root,20);
-    root = Node_add(root,10);
-    root = Node_add(root,5);
-    root = Node_add(root,15);
-    root = Node_add(root,30);
-    root = Node_add(root,40);
-    root = Node_add(root,20);
-    Node_print(root);
+    struct Tree* tree = new_Tree();
+    Tree_add(tree,20);
+    Tree_add(tree,10);
+    Tree_add(tree,5);
+    Tree_add(tree,15);
+    Tree_add(tree,30);
+    Tree_add(tree,40);
+    Tree_add(tree,20);
+    Tree_print(tree);
 }
