@@ -53,9 +53,9 @@ int Node_lookup(struct Node* this, int value) {
     if (this == NULL) {
 	return 0;
     } else if (value < this->value) {
-	return Tree_lookup(this->leftChild, value);
+	return Node_lookup(this->leftChild, value);
     } else if (value > this->value) {
-	return Tree_lookup(this->rightChild, value);
+	return Node_lookup(this->rightChild, value);
     } else {
 	return 1; // value == this->value
     }
